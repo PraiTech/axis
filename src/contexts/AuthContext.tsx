@@ -29,9 +29,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       try {
         const userData = JSON.parse(savedUser);
         setUser(userData);
-        logger.info('AUTH', 'Восстановлена сессия пользователя', { email: userData.email }, 'AuthProvider', 'SESSION_RESTORED');
+        logger.info('AUTH', 'User session restored', { email: userData.email }, 'AuthProvider', 'SESSION_RESTORED');
       } catch (error) {
-        logger.error('AUTH', 'Ошибка восстановления сессии', error, 'AuthProvider', 'SESSION_ERROR');
+        logger.error('AUTH', 'Session restoration error', error, 'AuthProvider', 'SESSION_ERROR');
         localStorage.removeItem('auth_user');
       }
     }
@@ -49,10 +49,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       const userData = { email: trimmedEmail };
       setUser(userData);
       localStorage.setItem('auth_user', JSON.stringify(userData));
-      logger.info('AUTH', 'Успешный вход', { email: trimmedEmail }, 'AuthProvider', 'LOGIN_SUCCESS');
+      logger.info('AUTH', 'Login successful', { email: trimmedEmail }, 'AuthProvider', 'LOGIN_SUCCESS');
       return true;
     } else {
-      logger.warn('AUTH', 'Неверные учетные данные', { 
+      logger.warn('AUTH', 'Invalid credentials', { 
         providedEmail: trimmedEmail, 
         providedPassword: trimmedPassword,
         expectedEmail: MOCK_EMAIL 
@@ -69,14 +69,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const userData = { email };
     setUser(userData);
     localStorage.setItem('auth_user', JSON.stringify(userData));
-    logger.info('AUTH', 'Успешная регистрация', { email }, 'AuthProvider', 'REGISTER_SUCCESS');
+    logger.info('AUTH', 'Registration successful', { email }, 'AuthProvider', 'REGISTER_SUCCESS');
     return true;
   };
 
   const logout = () => {
     setUser(null);
     localStorage.removeItem('auth_user');
-    logger.info('AUTH', 'Выход из системы', {}, 'AuthProvider', 'LOGOUT');
+    logger.info('AUTH', 'Logout', {}, 'AuthProvider', 'LOGOUT');
   };
 
   return (

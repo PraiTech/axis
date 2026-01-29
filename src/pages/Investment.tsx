@@ -133,7 +133,7 @@ export default function Investment() {
           </div>
           <Button onClick={() => setIsDialogOpen(true)} className="shadow-sm">
             <Plus className="h-4 w-4 mr-2" />
-            Добавить инвестицию
+            Add Investment
           </Button>
         </div>
 

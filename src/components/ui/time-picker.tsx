@@ -305,7 +305,7 @@ export function TimePicker({ value, onChange, placeholder = "HH:mm", className }
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent" />
                   <div className="relative text-center px-4 py-4">
                     <div className="text-base font-extrabold text-foreground tracking-tight">
-                      Выберите время
+                      Select time
                     </div>
                   </div>
                 </div>
@@ -315,7 +315,7 @@ export function TimePicker({ value, onChange, placeholder = "HH:mm", className }
                   {/* Hours column */}
                   <div className="flex-1 border-r border-primary/20">
                     <div className="text-center py-3 text-xs font-extrabold text-primary/80 uppercase tracking-widest border-b border-primary/20 bg-gradient-to-b from-muted/40 to-muted/20">
-                      Часы
+                      Hours
                     </div>
                     <div
                       ref={hourScrollRef}
@@ -360,7 +360,7 @@ export function TimePicker({ value, onChange, placeholder = "HH:mm", className }
                   {/* Minutes column */}
                   <div className="flex-1">
                     <div className="text-center py-3 text-xs font-extrabold text-primary/80 uppercase tracking-widest border-b border-primary/20 bg-gradient-to-b from-muted/40 to-muted/20">
-                      Минуты
+                      Minutes
                     </div>
                     <div
                       ref={minuteScrollRef}

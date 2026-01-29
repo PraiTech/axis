@@ -8,7 +8,7 @@ interface PageTransitionProps {
 
 export function PageTransition({ children }: PageTransitionProps) {
   useEffect(() => {
-    logger.debug('ANIMATION', 'Анимация перехода страницы запущена', undefined, 'PageTransition', 'ANIMATE');
+    logger.debug('ANIMATION', 'Page transition animation started', undefined, 'PageTransition', 'ANIMATE');
   }, []);
 
   return (
@@ -21,10 +21,10 @@ export function PageTransition({ children }: PageTransitionProps) {
         ease: [0.22, 1, 0.36, 1]
       }}
       onAnimationStart={() => {
-        logger.debug('ANIMATION', 'Анимация началась', undefined, 'PageTransition', 'ANIMATION_START');
+        logger.debug('ANIMATION', 'Animation started', undefined, 'PageTransition', 'ANIMATION_START');
       }}
       onAnimationComplete={() => {
-        logger.debug('ANIMATION', 'Анимация завершена', undefined, 'PageTransition', 'ANIMATION_COMPLETE');
+        logger.debug('ANIMATION', 'Animation completed', undefined, 'PageTransition', 'ANIMATION_COMPLETE');
       }}
     >
       {children}

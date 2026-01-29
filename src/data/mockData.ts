@@ -1132,10 +1132,10 @@ export const dashboardMetrics = {
   averageCheck: 272,
   sessions: 8,
   sessionTypes: [
-    { name: 'Individual', value: 45, color: '#0284c7', revenue: 9900, avgDuration: '1 ч', trend: 12 },
-    { name: 'Pair', value: 25, color: '#6366f1', revenue: 5500, avgDuration: '1 ч 15 мин', trend: 5 },
-    { name: 'Online', value: 20, color: '#0d9488', revenue: 4000, avgDuration: '45 мин', trend: -2 },
-    { name: 'Group', value: 10, color: '#0891b2', revenue: 1800, avgDuration: '1 ч 30 мин', trend: 8 }
+    { name: 'Individual', value: 45, color: '#0284c7', revenue: 9900, avgDuration: '1 h', trend: 12 },
+    { name: 'Pair', value: 25, color: '#6366f1', revenue: 5500, avgDuration: '1 h 15 min', trend: 5 },
+    { name: 'Online', value: 20, color: '#0d9488', revenue: 4000, avgDuration: '45 min', trend: -2 },
+    { name: 'Group', value: 10, color: '#0891b2', revenue: 1800, avgDuration: '1 h 30 min', trend: 8 }
   ],
   dynamics: [
     { month: 'JAN', value: 5 },

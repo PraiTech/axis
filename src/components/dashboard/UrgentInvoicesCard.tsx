@@ -145,7 +145,7 @@ export function UrgentInvoicesCard({ invoices, delay = 0 }: UrgentInvoicesCardPr
             <span className="icon-inset flex h-8 w-8 items-center justify-center rounded-lg bg-amber-100 text-amber-600">
               <AlertCircle className="h-4 w-4" />
             </span>
-            Срочные инвойсы
+            Urgent Invoices
           </h3>
         </div>
         <div className="dashboard-card-scroll flex-1 min-h-0 overflow-y-auto overflow-x-hidden px-4 py-3 pr-1 [scrollbar-gutter:stable]">

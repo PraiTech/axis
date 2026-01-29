@@ -154,19 +154,19 @@ export function AddInvestmentDialog({
     }}>
       <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle>Добавить инвестицию</DialogTitle>
+          <DialogTitle>Add Investment</DialogTitle>
         </DialogHeader>
 
         <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as 'select' | 'settings')}>
           <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="select">Инвестиция</TabsTrigger>
-            <TabsTrigger value="settings">Настройки</TabsTrigger>
+            <TabsTrigger value="select">Investment</TabsTrigger>
+            <TabsTrigger value="settings">Settings</TabsTrigger>
           </TabsList>
 
           {/* Вкладка 1: Выбор инвестиции */}
           <TabsContent value="select" className="space-y-4 mt-4">
             <div className="space-y-2">
-              <Label>Выберите шаблон инвестиции</Label>
+              <Label>Select Investment Template</Label>
               {templates.length === 0 ? (
                 <div className="text-sm text-muted-foreground p-4 border rounded-md">
                   No saved templates. Create a template in the "Settings" tab
@@ -193,14 +193,14 @@ export function AddInvestmentDialog({
                             </div>
                             <div className="text-sm text-muted-foreground space-y-1">
                               <div>
-                                <span className="font-medium">Тип:</span> {template.type}
+                                <span className="font-medium">Type:</span> {template.type}
                               </div>
                               <div>
-                                <span className="font-medium">Куда инвестировано:</span> {template.whereInvested}
+                                <span className="font-medium">Where Invested:</span> {template.whereInvested}
                               </div>
                               {template.comments && (
                                 <div>
-                                  <span className="font-medium">Комментарии:</span> {template.comments}
+                                  <span className="font-medium">Comments:</span> {template.comments}
                                 </div>
                               )}
                             </div>
@@ -216,7 +216,7 @@ export function AddInvestmentDialog({
             {selectedTemplate && (
               <div className="p-4 bg-muted/50 rounded-lg space-y-4">
                 <div>
-                  <Label htmlFor="amount">Сумма инвестиции ($)</Label>
+                  <Label htmlFor="amount">Investment Amount ($)</Label>
                   <Input
                     id="amount"
                     type="number"
@@ -227,7 +227,7 @@ export function AddInvestmentDialog({
                   />
                 </div>
                 <div>
-                  <Label htmlFor="date">Дата инвестиции</Label>
+                  <Label htmlFor="date">Investment Date</Label>
                   <Calendar
                     value={investmentForm.date ? parse(investmentForm.date, 'yyyy-MM-dd', new Date()) : undefined}
                     onChange={(d) => setInvestmentForm({ ...investmentForm, date: d ? format(d, 'yyyy-MM-dd') : '' })}
@@ -243,7 +243,7 @@ export function AddInvestmentDialog({
           <TabsContent value="settings" className="space-y-4 mt-4">
             <div className="space-y-4">
               <div>
-                <Label htmlFor="template-name">Название инвестиции *</Label>
+                <Label htmlFor="template-name">Investment Name *</Label>
                 <Input
                   id="template-name"
                   placeholder="Example: Tech Stocks Portfolio"
@@ -254,7 +254,7 @@ export function AddInvestmentDialog({
               </div>
 
               <div>
-                <Label htmlFor="template-type">Тип инвестиции *</Label>
+                <Label htmlFor="template-type">Investment Type *</Label>
                 <Select
                   value={templateForm.type}
                   onValueChange={(value) => setTemplateForm({ ...templateForm, type: value })}
@@ -273,7 +273,7 @@ export function AddInvestmentDialog({
               </div>
 
               <div>
-                <Label htmlFor="where-invested">Куда инвестировано *</Label>
+                <Label htmlFor="where-invested">Where Invested *</Label>
                 <Input
                   id="where-invested"
                   placeholder="Example: Apple, Microsoft, Google or Bitcoin, Ethereum"
@@ -282,12 +282,12 @@ export function AddInvestmentDialog({
                   className="mt-1"
                 />
                 <p className="text-xs text-muted-foreground mt-1">
-                  Укажите компанию, криптовалюту или другой объект инвестирования
+                  Specify the company, cryptocurrency or other investment object
                 </p>
               </div>
 
               <div>
-                <Label htmlFor="comments">Комментарии</Label>
+                <Label htmlFor="comments">Comments</Label>
                 <Textarea
                   id="comments"
                   placeholder="Additional information about the investment..."
@@ -308,9 +308,9 @@ export function AddInvestmentDialog({
 
             {/* Форма для добавления инвестиции из настроек */}
             <div className="pt-4 border-t space-y-4">
-              <h4 className="font-semibold">Добавить инвестицию с этими настройками</h4>
+              <h4 className="font-semibold">Add investment with these settings</h4>
               <div>
-                <Label htmlFor="settings-amount">Сумма инвестиции ($)</Label>
+                <Label htmlFor="settings-amount">Investment Amount ($)</Label>
                 <Input
                   id="settings-amount"
                   type="number"
@@ -321,7 +321,7 @@ export function AddInvestmentDialog({
                 />
               </div>
               <div>
-                <Label htmlFor="settings-date">Дата инвестиции</Label>
+                <Label htmlFor="settings-date">Investment Date</Label>
                 <Calendar
                   value={investmentForm.date ? parse(investmentForm.date, 'yyyy-MM-dd', new Date()) : undefined}
                   onChange={(d) => setInvestmentForm({ ...investmentForm, date: d ? format(d, 'yyyy-MM-dd') : '' })}
@@ -335,10 +335,10 @@ export function AddInvestmentDialog({
 
         <DialogFooter>
           <Button variant="outline" onClick={handleClose}>
-            Отмена
+            Cancel
           </Button>
           <Button onClick={handleAddInvestment}>
-            Добавить инвестицию
+            Add Investment
           </Button>
         </DialogFooter>
       </DialogContent>

@@ -37,7 +37,7 @@ export function MetricCard({
   const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
-    logger.debug('COMPONENT', `Карточка метрики "${title}" отрендерена`, {
+    logger.debug('COMPONENT', `Metric card "${title}" rendered`, {
       title,
       value,
       delay

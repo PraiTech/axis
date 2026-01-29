@@ -133,7 +133,7 @@ export function AccountDetailModal({ open, onOpenChange, account, transactions }
               </div>
             </div>
             <div className="text-right shrink-0">
-              <div className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Баланс</div>
+              <div className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Balance</div>
               <div className="text-3xl font-bold text-primary mt-0.5">
                 {account.balance.toLocaleString()} {account.currency}
               </div>
@@ -154,36 +154,36 @@ export function AccountDetailModal({ open, onOpenChange, account, transactions }
               className="flex items-center gap-2.5 rounded-lg text-sm font-medium data-[state=active]:bg-background data-[state=active]:shadow-md data-[state=active]:text-foreground"
             >
               <Info className="h-4 w-4" />
-              Полная информация
+              Full Information
             </TabsTrigger>
             <TabsTrigger
               value="transactions"
               className="flex items-center gap-2.5 rounded-lg text-sm font-medium data-[state=active]:bg-background data-[state=active]:shadow-md data-[state=active]:text-foreground"
             >
               <CreditCard className="h-4 w-4" />
-              Все транзакции
+              All Transactions
             </TabsTrigger>
             <TabsTrigger
               value="chart"
               className="flex items-center gap-2.5 rounded-lg text-sm font-medium data-[state=active]:bg-background data-[state=active]:shadow-md data-[state=active]:text-foreground"
             >
               <TrendingUp className="h-4 w-4" />
-              График доходы/расходы
+              Income/Expense Chart
             </TabsTrigger>
           </TabsList>
 
           <TabsContent value="info" className="flex-1 overflow-y-auto pr-1 space-y-6 mt-0">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              {/* Основная информация */}
+              {/* Main Information */}
               <div className="p-6 rounded-2xl border bg-card shadow-sm">
-                <h3 className="text-lg font-semibold mb-5 text-foreground">Основная информация</h3>
+                <h3 className="text-lg font-semibold mb-5 text-foreground">Main Information</h3>
                 <div className="grid grid-cols-2 gap-5">
                   <div>
-                    <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1.5">Название</div>
+                    <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1.5">Name</div>
                     <div className="text-base font-semibold text-foreground">{account.name}</div>
                   </div>
                   <div>
-                    <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1.5">Тип</div>
+                    <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1.5">Type</div>
                     <div className="text-base font-semibold text-foreground">
                       {account.type === 'card' && 'Card'}
                       {account.type === 'crypto' && 'Crypto Account'}
@@ -193,13 +193,13 @@ export function AccountDetailModal({ open, onOpenChange, account, transactions }
                     </div>
                   </div>
                   <div>
-                    <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1.5">Баланс</div>
+                    <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1.5">Balance</div>
                     <div className="text-xl font-bold text-primary">
                       {account.balance.toLocaleString()} {account.currency}
                     </div>
                   </div>
                   <div>
-                    <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1.5">Статус</div>
+                    <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1.5">Status</div>
                     <span
                       className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium"
                       style={{ background: 'rgba(16, 185, 129, 0.15)', color: '#059669' }}
@@ -213,23 +213,23 @@ export function AccountDetailModal({ open, onOpenChange, account, transactions }
               {/* Детали в зависимости от типа счета */}
               {account.type === 'card' && (
                 <div className="p-6 rounded-2xl border bg-card shadow-sm">
-                  <h3 className="text-lg font-semibold mb-5 text-foreground">Детали карты</h3>
+                  <h3 className="text-lg font-semibold mb-5 text-foreground">Card Details</h3>
                   <div className="grid grid-cols-2 gap-5">
                     {account.holder && (
                       <div>
-                        <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1.5">Владелец</div>
+                        <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1.5">Holder</div>
                         <div className="text-base font-semibold text-foreground">{account.holder}</div>
                       </div>
                     )}
                     {account.cardNumber && (
                       <div>
-                        <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1.5">Номер карты</div>
+                        <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1.5">Card Number</div>
                         <div className="text-base font-semibold font-mono text-foreground">{account.cardNumber}</div>
                       </div>
                     )}
                     {account.expiry && (
                       <div>
-                        <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1.5">Срок действия</div>
+                        <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1.5">Expiry Date</div>
                         <div className="text-base font-semibold text-foreground">{account.expiry}</div>
                       </div>
                     )}
@@ -239,17 +239,17 @@ export function AccountDetailModal({ open, onOpenChange, account, transactions }
 
               {account.type === 'crypto' && (
                 <div className="p-6 rounded-2xl border bg-card shadow-sm">
-                  <h3 className="text-lg font-semibold mb-5 text-foreground">Детали крипто счёта</h3>
+                  <h3 className="text-lg font-semibold mb-5 text-foreground">Crypto Account Details</h3>
                   <div className="grid grid-cols-2 gap-5">
                     {account.cryptoType && (
                       <div>
-                        <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1.5">Тип криптовалюты</div>
+                        <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1.5">Cryptocurrency Type</div>
                         <div className="text-base font-semibold text-foreground">{account.cryptoType}</div>
                       </div>
                     )}
                     {account.walletAddress && (
                       <div className="col-span-2">
-                        <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1.5">Адрес кошелька</div>
+                        <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1.5">Wallet Address</div>
                         <div className="text-base font-semibold font-mono break-all text-foreground">{account.walletAddress}</div>
                       </div>
                     )}
@@ -259,11 +259,11 @@ export function AccountDetailModal({ open, onOpenChange, account, transactions }
 
               {account.type === 'exchange' && (
                 <div className="p-6 rounded-2xl border bg-card shadow-sm">
-                  <h3 className="text-lg font-semibold mb-5 text-foreground">Детали биржи</h3>
+                  <h3 className="text-lg font-semibold mb-5 text-foreground">Exchange Details</h3>
                   <div className="grid grid-cols-2 gap-5">
                     {account.exchangeName && (
                       <div>
-                        <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1.5">Название биржи</div>
+                        <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1.5">Exchange Name</div>
                         <div className="text-base font-semibold text-foreground">{account.exchangeName}</div>
                       </div>
                     )}
@@ -279,17 +279,17 @@ export function AccountDetailModal({ open, onOpenChange, account, transactions }
 
               {account.type === 'bank' && (
                 <div className="p-6 rounded-2xl border bg-card shadow-sm">
-                  <h3 className="text-lg font-semibold mb-5 text-foreground">Детали банковского счёта</h3>
+                  <h3 className="text-lg font-semibold mb-5 text-foreground">Bank Account Details</h3>
                   <div className="grid grid-cols-2 gap-5">
                     {account.bankName && (
                       <div>
-                        <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1.5">Банк</div>
+                        <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1.5">Bank</div>
                         <div className="text-base font-semibold text-foreground">{account.bankName}</div>
                       </div>
                     )}
                     {account.accountNumber && (
                       <div>
-                        <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1.5">Номер счёта</div>
+                        <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1.5">Account Number</div>
                         <div className="text-base font-semibold font-mono text-foreground">{account.accountNumber}</div>
                       </div>
                     )}
@@ -311,7 +311,7 @@ export function AccountDetailModal({ open, onOpenChange, account, transactions }
 
               {account.type === 'stripe' && (
                 <div className="p-6 rounded-2xl border bg-card shadow-sm">
-                  <h3 className="text-lg font-semibold mb-5 text-foreground">Детали Stripe</h3>
+                  <h3 className="text-lg font-semibold mb-5 text-foreground">Stripe Details</h3>
                   <div className="grid grid-cols-2 gap-5">
                     {account.stripeAccountId && (
                       <div>
@@ -332,22 +332,22 @@ export function AccountDetailModal({ open, onOpenChange, account, transactions }
 
             {/* Статистика — на всю ширину */}
             <div className="p-6 rounded-2xl border bg-card shadow-sm">
-              <h3 className="text-lg font-semibold mb-5 text-foreground">Статистика</h3>
+              <h3 className="text-lg font-semibold mb-5 text-foreground">Statistics</h3>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
                 <div className="p-5 rounded-xl bg-emerald-50 dark:bg-emerald-950/25 border border-emerald-100 dark:border-emerald-900/30">
-                  <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">Всего доходов</div>
+                  <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">Total Income</div>
                   <div className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">
                     +{totalIncome.toLocaleString()} {account.currency}
                   </div>
                 </div>
                 <div className="p-5 rounded-xl bg-rose-50 dark:bg-rose-950/25 border border-rose-100 dark:border-rose-900/30">
-                  <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">Всего расходов</div>
+                  <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">Total Expenses</div>
                   <div className="text-2xl font-bold text-rose-600 dark:text-rose-400">
                     -{totalExpense.toLocaleString()} {account.currency}
                   </div>
                 </div>
                 <div className="p-5 rounded-xl bg-sky-50 dark:bg-sky-950/25 border border-sky-100 dark:border-sky-900/30">
-                  <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">Транзакций</div>
+                  <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">Transactions</div>
                   <div className="text-2xl font-bold text-sky-600 dark:text-sky-400">
                     {accountTransactions.length}
                   </div>
@@ -362,11 +362,11 @@ export function AccountDetailModal({ open, onOpenChange, account, transactions }
                 <Table>
                   <TableHeader>
                     <TableRow className="border-b">
-                      <TableHead className="font-semibold text-xs text-muted-foreground uppercase tracking-wider">Клиент</TableHead>
-                      <TableHead className="font-semibold text-xs text-muted-foreground uppercase tracking-wider">Категория</TableHead>
-                      <TableHead className="font-semibold text-xs text-muted-foreground uppercase tracking-wider">Статус</TableHead>
-                      <TableHead className="font-semibold text-xs text-muted-foreground uppercase tracking-wider text-right">Сумма</TableHead>
-                      <TableHead className="font-semibold text-xs text-muted-foreground uppercase tracking-wider">Дата</TableHead>
+                      <TableHead className="font-semibold text-xs text-muted-foreground uppercase tracking-wider">Client</TableHead>
+                      <TableHead className="font-semibold text-xs text-muted-foreground uppercase tracking-wider">Category</TableHead>
+                      <TableHead className="font-semibold text-xs text-muted-foreground uppercase tracking-wider">Status</TableHead>
+                      <TableHead className="font-semibold text-xs text-muted-foreground uppercase tracking-wider text-right">Amount</TableHead>
+                      <TableHead className="font-semibold text-xs text-muted-foreground uppercase tracking-wider">Date</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
@@ -450,8 +450,8 @@ export function AccountDetailModal({ open, onOpenChange, account, transactions }
             ) : (
               <div className="text-center py-20 text-muted-foreground border rounded-2xl bg-card/50">
                 <CreditCard className="h-16 w-16 mx-auto mb-4 opacity-30" />
-                <p className="text-lg font-medium mb-2">Нет транзакций</p>
-                <p className="text-sm">Транзакции для этого счёта будут отображаться здесь</p>
+                <p className="text-lg font-medium mb-2">No transactions</p>
+                <p className="text-sm">Transactions for this account will be displayed here</p>
               </div>
             )}
           </TabsContent>
@@ -460,7 +460,7 @@ export function AccountDetailModal({ open, onOpenChange, account, transactions }
             {chartData.length > 0 ? (
               <div className="space-y-6">
                 <div className="p-6 rounded-2xl border bg-card shadow-sm">
-                  <h3 className="text-lg font-semibold mb-5 text-foreground">График доходов и расходов</h3>
+                  <h3 className="text-lg font-semibold mb-5 text-foreground">Income and Expense Chart</h3>
                   <div className="h-80">
                     <ResponsiveContainer width="100%" height="100%">
                       <AreaChart data={chartData}>
@@ -531,7 +531,7 @@ export function AccountDetailModal({ open, onOpenChange, account, transactions }
                 {/* Сводка по графику */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
                   <div className="p-5 rounded-2xl border bg-card shadow-sm">
-                    <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">Средний доход</div>
+                    <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">Average Income</div>
                     <div className="text-2xl font-bold text-emerald-600">
                       {chartData.length > 0 
                         ? (chartData.reduce((sum, d) => sum + d.income, 0) / chartData.length).toLocaleString(undefined, { maximumFractionDigits: 0 })
@@ -539,7 +539,7 @@ export function AccountDetailModal({ open, onOpenChange, account, transactions }
                     </div>
                   </div>
                   <div className="p-5 rounded-2xl border bg-card shadow-sm">
-                    <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">Средний расход</div>
+                    <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">Average Expense</div>
                     <div className="text-2xl font-bold text-rose-600">
                       {chartData.length > 0 
                         ? (chartData.reduce((sum, d) => sum + d.expense, 0) / chartData.length).toLocaleString(undefined, { maximumFractionDigits: 0 })
@@ -547,7 +547,7 @@ export function AccountDetailModal({ open, onOpenChange, account, transactions }
                     </div>
                   </div>
                   <div className="p-5 rounded-2xl border bg-card shadow-sm">
-                    <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">Чистая прибыль</div>
+                    <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">Net Profit</div>
                     <div className={`text-2xl font-bold ${totalIncome - totalExpense >= 0 ? 'text-emerald-600' : 'text-rose-600'}`}>
                       {(totalIncome - totalExpense >= 0 ? '+' : '')}{(totalIncome - totalExpense).toLocaleString()} {account.currency}
                     </div>
@@ -557,8 +557,8 @@ export function AccountDetailModal({ open, onOpenChange, account, transactions }
             ) : (
               <div className="text-center py-20 text-muted-foreground border rounded-2xl bg-card/50">
                 <TrendingUp className="h-16 w-16 mx-auto mb-4 opacity-30" />
-                <p className="text-lg font-medium mb-2">Нет данных для графика</p>
-                <p className="text-sm">Транзакции появятся здесь после их добавления</p>
+                <p className="text-lg font-medium mb-2">No data for chart</p>
+                <p className="text-sm">Transactions will appear here after they are added</p>
               </div>
             )}
           </TabsContent>

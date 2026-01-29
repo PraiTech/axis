@@ -546,7 +546,7 @@ export default function Payments() {
             </TabsTrigger>
             <TabsTrigger value="accounts" className="flex items-center gap-2">
               <Wallet2 className="h-4 w-4" />
-              Счета
+              Accounts
             </TabsTrigger>
           </TabsList>
 
@@ -867,19 +867,19 @@ export default function Payments() {
               <TabsList className="grid w-full grid-cols-5 mb-6">
                 <TabsTrigger value="card" className="flex items-center gap-2">
                   <CreditCard className="h-4 w-4" />
-                  Карты
+                  Cards
                 </TabsTrigger>
                 <TabsTrigger value="crypto" className="flex items-center gap-2">
                   <Coins className="h-4 w-4" />
-                  Крипто
+                  Crypto
                 </TabsTrigger>
                 <TabsTrigger value="exchange" className="flex items-center gap-2">
                   <Building2 className="h-4 w-4" />
-                  Биржи
+                  Exchanges
                 </TabsTrigger>
                 <TabsTrigger value="bank" className="flex items-center gap-2">
                   <Wallet2 className="h-4 w-4" />
-                  Банк
+                  Bank
                 </TabsTrigger>
                 <TabsTrigger value="stripe" className="flex items-center gap-2">
                   <Sparkles className="h-4 w-4" />
@@ -956,7 +956,7 @@ export default function Payments() {
                           <h3 className="text-lg font-semibold text-foreground mb-1">{getAccountTypeLabel()}</h3>
                           {totalBalance > 0 && (
                             <p className="text-sm text-muted-foreground">
-                              Общий баланс: {totalBalance.toLocaleString()} {filteredAccounts[0]?.currency || 'USD'}
+                              Total balance: {totalBalance.toLocaleString()} {filteredAccounts[0]?.currency || 'USD'}
                             </p>
                           )}
                         </div>
@@ -968,7 +968,7 @@ export default function Payments() {
                           }}
                         >
                           <Plus className="h-4 w-4 mr-2" />
-                          Добавить
+                          Add
                         </Button>
                       </div>
                       
@@ -1029,13 +1029,13 @@ export default function Payments() {
                                   </div>
                                   
                                   <div className="mb-4">
-                                    <div className="text-xs text-muted-foreground mb-1">Баланс</div>
+                                    <div className="text-xs text-muted-foreground mb-1">Balance</div>
                                     <div className="text-2xl font-bold text-foreground mb-1">
                                       {account.balance.toLocaleString()} {account.currency}
                                     </div>
                                     {filteredAccounts.length > 1 && (
                                       <div className="text-xs text-muted-foreground">
-                                        {accountPercentage.toFixed(1)}% от общего
+                                        {accountPercentage.toFixed(1)}% of total
                                       </div>
                                     )}
                                   </div>
@@ -1060,13 +1060,13 @@ export default function Payments() {
                                   
                                   {type === 'card' && account.holder && (
                                     <div className="pt-3 border-t border-gray-200/30">
-                                      <div className="text-xs text-muted-foreground mb-1">Владелец</div>
+                                      <div className="text-xs text-muted-foreground mb-1">Holder</div>
                                       <div className="text-sm font-semibold text-foreground">{account.holder}</div>
                                     </div>
                                   )}
                                   {type === 'crypto' && account.walletAddress && (
                                     <div className="pt-3 border-t border-gray-200/30">
-                                      <div className="text-xs text-muted-foreground mb-1">Адрес кошелька</div>
+                                      <div className="text-xs text-muted-foreground mb-1">Wallet Address</div>
                                       <div className="text-xs font-mono text-foreground break-all">
                                         {account.walletAddress.slice(0, 8)}...{account.walletAddress.slice(-6)}
                                       </div>
@@ -1074,13 +1074,13 @@ export default function Payments() {
                                   )}
                                   {type === 'exchange' && account.exchangeName && (
                                     <div className="pt-3 border-t border-gray-200/30">
-                                      <div className="text-xs text-muted-foreground mb-1">Биржа</div>
+                                      <div className="text-xs text-muted-foreground mb-1">Exchange</div>
                                       <div className="text-sm font-semibold text-foreground">{account.exchangeName}</div>
                                     </div>
                                   )}
                                   {type === 'bank' && account.bankName && (
                                     <div className="pt-3 border-t border-gray-200/30">
-                                      <div className="text-xs text-muted-foreground mb-1">Банк</div>
+                                      <div className="text-xs text-muted-foreground mb-1">Bank</div>
                                       <div className="text-sm font-semibold text-foreground">{account.bankName}</div>
                                     </div>
                                   )}
@@ -1647,15 +1647,15 @@ export default function Payments() {
             <DialogHeader>
               <DialogTitle className="flex items-center gap-2">
                 <Wallet2 className="h-5 w-5" />
-                Добавить счет
+                Add Account
               </DialogTitle>
               <DialogDescription>
-                Выберите тип счета и заполните необходимые данные
+                Select account type and fill in required information
               </DialogDescription>
             </DialogHeader>
             <div className="overflow-y-auto max-h-[60vh] pr-2 space-y-4 py-2">
               <div className="grid gap-2">
-                <Label>Тип счета *</Label>
+                <Label>Account Type *</Label>
                 <Select
                   value={accountType}
                   onValueChange={(v: AccountType) => setAccountType(v)}
@@ -1667,25 +1667,25 @@ export default function Payments() {
                     <SelectItem value="card">
                       <div className="flex items-center gap-2">
                         <CreditCard className="h-4 w-4" />
-                        Карта
+                        Card
                       </div>
                     </SelectItem>
                     <SelectItem value="crypto">
                       <div className="flex items-center gap-2">
                         <Coins className="h-4 w-4" />
-                        Крипто счет
+                        Crypto Account
                       </div>
                     </SelectItem>
                     <SelectItem value="exchange">
                       <div className="flex items-center gap-2">
                         <Building2 className="h-4 w-4" />
-                        Биржа
+                        Exchange
                       </div>
                     </SelectItem>
                     <SelectItem value="bank">
                       <div className="flex items-center gap-2">
                         <Wallet2 className="h-4 w-4" />
-                        Банковский счет (IBAN/SWIFT)
+                        Bank Account (IBAN/SWIFT)
                       </div>
                     </SelectItem>
                     <SelectItem value="stripe">
@@ -1744,7 +1744,7 @@ export default function Payments() {
               {accountType === 'card' && (
                 <>
                   <div className="grid gap-2">
-                    <Label htmlFor="card-holder-acc">Имя владельца *</Label>
+                    <Label htmlFor="card-holder-acc">Cardholder Name *</Label>
                     <Input
                       id="card-holder-acc"
                       value={addAccountForm.holder}
@@ -1753,7 +1753,7 @@ export default function Payments() {
                     />
                   </div>
                   <div className="grid gap-2">
-                    <Label htmlFor="card-number-acc">Номер карты *</Label>
+                    <Label htmlFor="card-number-acc">Card Number *</Label>
                     <Input
                       id="card-number-acc"
                       value={addAccountForm.cardNumber}
@@ -1768,7 +1768,7 @@ export default function Payments() {
                   </div>
                   <div className="grid grid-cols-2 gap-4">
                     <div className="grid gap-2">
-                      <Label>Тип карты</Label>
+                      <Label>Card Type</Label>
                       <Select
                         value={addAccountForm.cardType}
                         onValueChange={(v: 'visa' | 'mastercard') => setAddAccountForm(f => ({ ...f, cardType: v }))}
@@ -1783,7 +1783,7 @@ export default function Payments() {
                       </Select>
                     </div>
                     <div className="grid gap-2">
-                      <Label htmlFor="card-expiry-acc">Срок действия (MM/YY)</Label>
+                      <Label htmlFor="card-expiry-acc">Expiry Date (MM/YY)</Label>
                       <Input
                         id="card-expiry-acc"
                         value={addAccountForm.expiry}
@@ -1806,7 +1806,7 @@ export default function Payments() {
               {accountType === 'crypto' && (
                 <>
                   <div className="grid gap-2">
-                    <Label htmlFor="crypto-type">Тип криптовалюты</Label>
+                    <Label htmlFor="crypto-type">Cryptocurrency Type</Label>
                     <Select
                       value={addAccountForm.cryptoType}
                       onValueChange={(v) => setAddAccountForm(f => ({ ...f, cryptoType: v }))}
@@ -1825,7 +1825,7 @@ export default function Payments() {
                     </Select>
                   </div>
                   <div className="grid gap-2">
-                    <Label htmlFor="wallet-address">Адрес кошелька</Label>
+                    <Label htmlFor="wallet-address">Wallet Address</Label>
                     <Input
                       id="wallet-address"
                       value={addAccountForm.walletAddress}
@@ -1875,7 +1875,7 @@ export default function Payments() {
               {accountType === 'bank' && (
                 <>
                   <div className="grid gap-2">
-                    <Label htmlFor="bank-name">Название банка *</Label>
+                    <Label htmlFor="bank-name">Bank Name *</Label>
                     <Input
                       id="bank-name"
                       value={addAccountForm.bankName}
@@ -1902,7 +1902,7 @@ export default function Payments() {
                     />
                   </div>
                   <div className="grid gap-2">
-                    <Label htmlFor="account-number">Номер счета</Label>
+                    <Label htmlFor="account-number">Account Number</Label>
                     <Input
                       id="account-number"
                       value={addAccountForm.accountNumber}
@@ -1926,7 +1926,7 @@ export default function Payments() {
                     />
                   </div>
                   <div className="grid gap-2">
-                    <Label htmlFor="stripe-email">Email аккаунта Stripe</Label>
+                    <Label htmlFor="stripe-email">Stripe Account Email</Label>
                     <Input
                       id="stripe-email"
                       type="email"
@@ -1939,12 +1939,12 @@ export default function Payments() {
               )}
             </div>
             <DialogFooter>
-              <Button variant="outline" onClick={() => setAddAccountOpen(false)}>Отмена</Button>
+              <Button variant="outline" onClick={() => setAddAccountOpen(false)}>Cancel</Button>
               <Button
                 onClick={handleAddAccount}
                 disabled={!addAccountForm.name.trim() || !addAccountForm.balance.trim() || parseFloat(addAccountForm.balance) < 0}
               >
-                Добавить счет
+                Add Account
               </Button>
             </DialogFooter>
           </DialogContent>

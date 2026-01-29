@@ -314,11 +314,11 @@ export default function Clients() {
     const minutesUntil = differenceInMinutes(sessionTime, now);
     
     if (minutesUntil < 30) {
-      return { level: 'urgent', minutes: minutesUntil, label: `${minutesUntil} мин` };
+      return { level: 'urgent', minutes: minutesUntil, label: `${minutesUntil} min` };
     } else if (minutesUntil < 120) {
-      return { level: 'soon', minutes: minutesUntil, label: `${Math.floor(minutesUntil / 60)} ч ${minutesUntil % 60} мин` };
+      return { level: 'soon', minutes: minutesUntil, label: `${Math.floor(minutesUntil / 60)} h ${minutesUntil % 60} min` };
     } else {
-      return { level: 'normal', minutes: minutesUntil, label: `${Math.floor(minutesUntil / 60)} ч` };
+      return { level: 'normal', minutes: minutesUntil, label: `${Math.floor(minutesUntil / 60)} h` };
     }
   };
 
@@ -418,7 +418,7 @@ export default function Clients() {
                 )}
               </div>
 
-              {/* Client Tab Content - Первая вкладка со всей информацией о клиенте */}
+              {/* Client Tab Content - First tab with all client information */}
               <TabsContent value="client" className="mt-6">
                 <div className="max-w-4xl mx-auto">
                   <Card className="border-0 shadow-md">
@@ -900,7 +900,7 @@ export default function Clients() {
           )}
         </div>
 
-        {/* Main Tabs: Клиенты и Расписание */}
+        {/* Main Tabs: Clients and Schedule */}
         <Tabs value={mainTab} onValueChange={(value) => setMainTab(value as 'clients' | 'schedule')} className="w-full">
           <TabsList className="h-auto p-1.5 bg-slate-100/50 border border-slate-200 rounded-xl w-full max-w-md">
             <TabsTrigger 

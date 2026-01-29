@@ -171,7 +171,7 @@ function TaskNode({
           onClick={() => onAddSubtask(task.id)}
         >
           <Plus className="h-4 w-4 mr-1" />
-          Подзадача
+          Subtask
         </Button>
       </div>
       <AnimatePresence>
@@ -231,14 +231,14 @@ function TaskNode({
                   }}
                 />
                 <Button size="sm" onClick={handleAddSubtask}>
-                  Добавить
+                  Add
                 </Button>
                 <Button
                   size="sm"
                   variant="ghost"
                   onClick={onCancelAdd}
                 >
-                  Отмена
+                  Cancel
                 </Button>
               </motion.div>
             )}
@@ -327,7 +327,7 @@ export function GoalTreeDialog({ open, onClose, goal, onUpdateGoal }: GoalTreeDi
               onClick={() => setShowAddTask(true)}
             >
               <Plus className="h-4 w-4 mr-1.5" />
-              Добавить задачу
+              Add Task
             </Button>
           </div>
         </DialogHeader>
@@ -403,14 +403,14 @@ export function GoalTreeDialog({ open, onClose, goal, onUpdateGoal }: GoalTreeDi
                 }}
               />
               <Button size="sm" onClick={addTaskToGoal}>
-                Добавить
+                Add
               </Button>
               <Button
                 size="sm"
                 variant="ghost"
                 onClick={handleCancelAddTask}
               >
-                Отмена
+                Cancel
               </Button>
             </motion.div>
           )}
@@ -448,7 +448,7 @@ export function GoalTreeDialog({ open, onClose, goal, onUpdateGoal }: GoalTreeDi
         </div>
 
         <p className="relative text-xs text-slate-500 pt-2">
-          Прогресс рассчитывается от подзадач к задачам и к цели. Вы можете создавать бесконечное количество уровней вложенности.
+          Progress is calculated from subtasks to tasks and to the goal. You can create an infinite number of nesting levels.
         </p>
       </DialogContent>
     </Dialog>

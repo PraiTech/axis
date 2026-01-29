@@ -157,12 +157,12 @@ export function InvestmentDetailModal({
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
           <TabsList className="grid w-full grid-cols-3">
-            <TabsTrigger value="info">Вся инфа</TabsTrigger>
-            <TabsTrigger value="charts">Графики</TabsTrigger>
-            <TabsTrigger value="analytics">Аналитика</TabsTrigger>
+            <TabsTrigger value="info">All Info</TabsTrigger>
+            <TabsTrigger value="charts">Charts</TabsTrigger>
+            <TabsTrigger value="analytics">Analytics</TabsTrigger>
           </TabsList>
 
-          {/* Вкладка 1: Вся инфа */}
+          {/* Tab 1: All Info */}
           <TabsContent value="info" className="space-y-4 mt-4">
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
               <Card>
@@ -181,7 +181,7 @@ export function InvestmentDetailModal({
                 <CardHeader className="pb-2">
                   <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-2">
                     <DollarSign className="h-4 w-4" />
-                    Начальная инвестиция
+                    Initial Investment
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -193,7 +193,7 @@ export function InvestmentDetailModal({
                 <CardHeader className="pb-2">
                   <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-2">
                     <TrendingUp className="h-4 w-4" />
-                    Прибыль/Убыток
+                    Profit/Loss
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -207,7 +207,7 @@ export function InvestmentDetailModal({
                 <CardHeader className="pb-2">
                   <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-2">
                     <Percent className="h-4 w-4" />
-                    Доходность
+                    Return
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -220,18 +220,18 @@ export function InvestmentDetailModal({
 
             <Card>
               <CardHeader>
-                <CardTitle>Детальная информация</CardTitle>
+                <CardTitle>Detailed Information</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="grid gap-4 md:grid-cols-2">
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Тип инвестиции</label>
+                    <label className="text-sm font-medium text-muted-foreground">Investment Type</label>
                     <p className="text-lg font-semibold mt-1">{investment.type}</p>
                   </div>
                   <div>
                     <label className="text-sm font-medium text-muted-foreground flex items-center gap-2">
                       <Calendar className="h-4 w-4" />
-                      Дата инвестиции
+                      Investment Date
                     </label>
                     <p className="text-lg font-semibold mt-1">
                       {new Date(investment.date).toLocaleDateString('ru-RU', { 
@@ -250,13 +250,13 @@ export function InvestmentDetailModal({
                     <p className="text-lg font-semibold mt-1">${investment.currentValue.toLocaleString()}</p>
                   </div>
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Абсолютная прибыль/убыток</label>
+                    <label className="text-sm font-medium text-muted-foreground">Absolute Profit/Loss</label>
                     <p className={`text-lg font-semibold mt-1 ${isPositive ? 'text-green-600' : 'text-red-600'}`}>
                       {isPositive ? '+' : ''}${investment.return.toLocaleString()}
                     </p>
                   </div>
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Процентная доходность</label>
+                    <label className="text-sm font-medium text-muted-foreground">Percentage Return</label>
                     <p className={`text-lg font-semibold mt-1 ${isPositive ? 'text-green-600' : 'text-red-600'}`}>
                       {isPositive ? '+' : ''}{investment.returnPercent.toFixed(2)}%
                     </p>
@@ -266,11 +266,11 @@ export function InvestmentDetailModal({
             </Card>
           </TabsContent>
 
-          {/* Вкладка 2: Графики */}
+          {/* Tab 2: Charts */}
           <TabsContent value="charts" className="space-y-4 mt-4">
             <Card>
               <CardHeader>
-                <CardTitle>График стоимости с начала инвестиции</CardTitle>
+                <CardTitle>Value Chart from Investment Start</CardTitle>
               </CardHeader>
               <CardContent>
                 <ResponsiveContainer width="100%" height={400}>
@@ -306,7 +306,7 @@ export function InvestmentDetailModal({
 
             <Card>
               <CardHeader>
-                <CardTitle>Сравнение начальной и текущей стоимости</CardTitle>
+                <CardTitle>Comparison of Initial and Current Value</CardTitle>
               </CardHeader>
               <CardContent>
                 <ResponsiveContainer width="100%" height={300}>
@@ -328,19 +328,19 @@ export function InvestmentDetailModal({
             </Card>
           </TabsContent>
 
-          {/* Вкладка 3: Аналитика */}
+          {/* Tab 3: Analytics */}
           <TabsContent value="analytics" className="space-y-4 mt-4">
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
               <Card>
                 <CardHeader className="pb-2">
                   <CardTitle className="text-sm font-medium text-muted-foreground">
-                    Дней в инвестиции
+                    Days in Investment
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold">{analyticsData.daysInvested}</div>
                   <div className="text-sm text-muted-foreground mt-1">
-                    ~{analyticsData.monthsInvested} месяцев
+                    ~{analyticsData.monthsInvested} months
                   </div>
                 </CardContent>
               </Card>
@@ -348,7 +348,7 @@ export function InvestmentDetailModal({
               <Card>
                 <CardHeader className="pb-2">
                   <CardTitle className="text-sm font-medium text-muted-foreground">
-                    Годовая доходность
+                    Annual Return
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -361,7 +361,7 @@ export function InvestmentDetailModal({
               <Card>
                 <CardHeader className="pb-2">
                   <CardTitle className="text-sm font-medium text-muted-foreground">
-                    Общая прибыль
+                    Total Profit
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -374,7 +374,7 @@ export function InvestmentDetailModal({
               <Card>
                 <CardHeader className="pb-2">
                   <CardTitle className="text-sm font-medium text-muted-foreground">
-                    Процентная доходность
+                    Percentage Return
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -393,22 +393,22 @@ export function InvestmentDetailModal({
                   ) : (
                     <TrendingDown className="h-5 w-5 text-red-600" />
                   )}
-                  Анализ прибыли/убытков
+                  Profit/Loss Analysis
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="grid gap-4 md:grid-cols-2">
                   <div className="p-4 border rounded-lg">
-                    <div className="text-sm text-muted-foreground">Начальная инвестиция</div>
+                    <div className="text-sm text-muted-foreground">Initial Investment</div>
                     <div className="text-2xl font-bold mt-1">${investment.amount.toLocaleString()}</div>
                   </div>
                   <div className="p-4 border rounded-lg">
-                    <div className="text-sm text-muted-foreground">Текущая стоимость</div>
+                    <div className="text-sm text-muted-foreground">Current Value</div>
                     <div className="text-2xl font-bold mt-1">${investment.currentValue.toLocaleString()}</div>
                   </div>
                 </div>
                 <div className="p-4 border rounded-lg bg-muted/50">
-                  <div className="text-sm text-muted-foreground">Чистая прибыль/убыток</div>
+                    <div className="text-sm text-muted-foreground">Net Profit/Loss</div>
                   <div className={`text-3xl font-bold mt-1 ${isPositive ? 'text-green-600' : 'text-red-600'}`}>
                     {isPositive ? '+' : ''}${investment.return.toLocaleString()} ({isPositive ? '+' : ''}{investment.returnPercent.toFixed(2)}%)
                   </div>

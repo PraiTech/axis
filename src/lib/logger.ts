@@ -183,18 +183,18 @@ class Logger {
   clearHistory() {
     this.logHistory = [];
     console.clear();
-    this.info('SYSTEM', 'История логов очищена', undefined, 'Logger', 'CLEAR');
+    this.info('SYSTEM', 'Log history cleared', undefined, 'Logger', 'CLEAR');
   }
 
   // Включить/выключить логирование
   enable() {
     this.isEnabled = true;
-    this.info('SYSTEM', 'Логирование включено', undefined, 'Logger', 'ENABLE');
+    this.info('SYSTEM', 'Logging enabled', undefined, 'Logger', 'ENABLE');
   }
 
   disable() {
     this.isEnabled = false;
-    console.log('Логирование отключено');
+    console.log('Logging disabled');
   }
 
   // Экспорт истории в консоль
