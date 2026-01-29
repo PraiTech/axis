@@ -7,8 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { motion } from 'framer-motion';
-import { User, Bell, Moon, Globe, Mail, Smartphone, MessageSquare, Hash } from 'lucide-react';
-import { useTheme } from '@/contexts/ThemeContext';
+import { User, Bell, Globe, Mail, Smartphone, Hash } from 'lucide-react';
 import {
   Select,
   SelectContent,
@@ -18,9 +17,6 @@ import {
 } from '@/components/ui/select';
 
 export default function Settings() {
-  const { theme, setTheme } = useTheme();
-  const isDark = theme === 'dark';
-
   return (
     <PageTransition>
       <div className="space-y-6">
@@ -32,7 +28,7 @@ export default function Settings() {
         </div>
 
         <Tabs defaultValue="profile" className="w-full">
-          <TabsList className="grid w-full grid-cols-4">
+          <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="profile" className="flex items-center gap-2">
               <User className="h-4 w-4" />
               Profile
@@ -40,10 +36,6 @@ export default function Settings() {
             <TabsTrigger value="notifications" className="flex items-center gap-2">
               <Bell className="h-4 w-4" />
               Notifications
-            </TabsTrigger>
-            <TabsTrigger value="appearance" className="flex items-center gap-2">
-              <Moon className="h-4 w-4" />
-              Appearance
             </TabsTrigger>
             <TabsTrigger value="language" className="flex items-center gap-2">
               <Globe className="h-4 w-4" />
@@ -171,38 +163,6 @@ export default function Settings() {
                     <div className="absolute top-0 right-0">
                       <Switch />
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          </TabsContent>
-
-          {/* Appearance Tab */}
-          <TabsContent value="appearance" className="mt-6">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Moon className="h-5 w-5" />
-                    Appearance
-                  </CardTitle>
-                  <CardDescription>
-                    Customize the appearance of the application
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <div className="space-y-0.5">
-                      <Label>Dark Mode</Label>
-                      <p className="text-sm text-muted-foreground">
-                        Enable dark mode theme
-                      </p>
-                    </div>
-                    <Switch checked={isDark} onCheckedChange={(checked) => setTheme(checked ? 'dark' : 'light')} />
                   </div>
                 </CardContent>
               </Card>

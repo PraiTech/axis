@@ -46,33 +46,6 @@
     --card-radius: clamp(12px, 2vw, 20px);
     --metric-icon-size: clamp(2rem, 4vw, 3.25rem);
   }
-
-  .dark {
-    /* Тёмно-серая тема в стиле ChatGPT (фото 2) */
-    /* Основной фон контента - очень тёмный серый (#1A1B1E / #202123) */
-    --background: 220 8% 11%;
-    --foreground: 0 0% 98%;
-    /* Sidebar - немного светлее основного фона (#2C2D30 / #343538) */
-    --card: 220 5% 18%;
-    --card-foreground: 0 0% 98%;
-    --popover: 220 5% 18%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 220 8% 11%;
-    /* Вторичные элементы - средний тёмно-серый */
-    --secondary: 220 5% 22%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 220 5% 25%;
-    --muted-foreground: 0 0% 70%;
-    /* Акцентные элементы и выделенные - светлее (#3D3F43 / #40414F) */
-    --accent: 220 6% 26%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 72% 51%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 220 5% 20%;
-    --input: 220 5% 20%;
-    --ring: 220 6% 30%;
-  }
 }
 
 @layer base {
@@ -260,21 +233,6 @@
   box-shadow:
     0 2px 8px rgba(0, 0, 0, 0.08),
     0 1px 0 rgba(255, 255, 255, 0.5) inset;
-}
-.dark .sidebar-item-inset {
-  box-shadow:
-    inset 0 2px 4px rgba(0, 0, 0, 0.2),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.03);
-}
-.dark .sidebar-item-inset:hover {
-  box-shadow:
-    inset 0 1px 2px rgba(0, 0, 0, 0.15),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.02);
-}
-.dark .sidebar-item-raised {
-  box-shadow:
-    0 2px 12px rgba(0, 0, 0, 0.3),
-    0 1px 0 rgba(255, 255, 255, 0.08) inset;
 }
 
 /* --- ORDER ICON: светлая коробка, вдавленность как на референсе (блик сверху-слева, тень снизу-справа) --- */

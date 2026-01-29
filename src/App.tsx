@@ -5,7 +5,6 @@ import { PageSkeleton } from '@/components/shared/SkeletonLoader';
 import { preloadAllData } from '@/hooks/useDataCache';
 import { ErrorBoundary } from '@/components/shared/ErrorBoundary';
 import { ProtectedRoute } from '@/components/auth/ProtectedRoute';
-import { ThemeProvider } from '@/contexts/ThemeContext';
 import logger from '@/lib/logger';
 
 // Lazy load pages for code splitting с предзагрузкой
@@ -87,8 +86,7 @@ function App() {
 
   return (
     <ErrorBoundary>
-      <ThemeProvider>
-        <BrowserRouter>
+      <BrowserRouter>
           <RouteTracker />
           <Routes>
           {/* Публичные роуты */}
@@ -201,7 +199,6 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
-      </ThemeProvider>
     </ErrorBoundary>
   );
 }

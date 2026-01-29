@@ -334,21 +334,21 @@ export function AccountDetailModal({ open, onOpenChange, account, transactions }
             <div className="p-6 rounded-2xl border bg-card shadow-sm">
               <h3 className="text-lg font-semibold mb-5 text-foreground">Statistics</h3>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-                <div className="p-5 rounded-xl bg-emerald-50 dark:bg-emerald-950/25 border border-emerald-100 dark:border-emerald-900/30">
+                <div className="p-5 rounded-xl bg-emerald-50 border border-emerald-100">
                   <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">Total Income</div>
-                  <div className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">
+                  <div className="text-2xl font-bold text-emerald-600">
                     +{totalIncome.toLocaleString()} {account.currency}
                   </div>
                 </div>
-                <div className="p-5 rounded-xl bg-rose-50 dark:bg-rose-950/25 border border-rose-100 dark:border-rose-900/30">
+                <div className="p-5 rounded-xl bg-rose-50 border border-rose-100">
                   <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">Total Expenses</div>
-                  <div className="text-2xl font-bold text-rose-600 dark:text-rose-400">
+                  <div className="text-2xl font-bold text-rose-600">
                     -{totalExpense.toLocaleString()} {account.currency}
                   </div>
                 </div>
-                <div className="p-5 rounded-xl bg-sky-50 dark:bg-sky-950/25 border border-sky-100 dark:border-sky-900/30">
+                <div className="p-5 rounded-xl bg-sky-50 border border-sky-100">
                   <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">Transactions</div>
-                  <div className="text-2xl font-bold text-sky-600 dark:text-sky-400">
+                  <div className="text-2xl font-bold text-sky-600">
                     {accountTransactions.length}
                   </div>
                 </div>
