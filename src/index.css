@@ -1,0 +1,459 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* --- Smart scaling: CSS variables for any resolution --- */
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 0 0% 15%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 0 0% 15%;
+    --radius: 0.5rem;
+
+    /* Fluid scaling: зависят от viewport */
+    --scale-base: clamp(0.875rem, 0.7rem + 0.5vw, 1rem);
+    --scale-sm: clamp(0.75rem, 0.6rem + 0.4vw, 0.875rem);
+    --scale-xs: clamp(0.65rem, 0.5rem + 0.35vw, 0.75rem);
+    --scale-lg: clamp(1rem, 0.85rem + 0.5vw, 1.125rem);
+    --scale-xl: clamp(1.125rem, 1rem + 0.5vw, 1.25rem);
+    --scale-2xl: clamp(1.25rem, 1rem + 0.75vw, 1.5rem);
+    --scale-3xl: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+
+    --sidebar-w: 256px;
+    --sidebar-w-collapsed: 80px;
+    --header-h: clamp(3.5rem, 5vh + 2rem, 4rem);
+    --content-pad: clamp(0.75rem, 2vw, 1.5rem);
+    --content-pad-y: clamp(1rem, 3vh, 2.5rem);
+    --card-gap: clamp(0.75rem, 1.5vw, 1.5rem);
+    --chart-min-h: clamp(280px, 40vh, 500px);
+    --chart-max-h: clamp(400px, 55vh, 600px);
+    --card-radius: clamp(12px, 2vw, 20px);
+    --metric-icon-size: clamp(2rem, 4vw, 3.25rem);
+  }
+
+  .dark {
+    /* Тёмно-серая тема в стиле ChatGPT (фото 2) */
+    /* Основной фон контента - очень тёмный серый (#1A1B1E / #202123) */
+    --background: 220 8% 11%;
+    --foreground: 0 0% 98%;
+    /* Sidebar - немного светлее основного фона (#2C2D30 / #343538) */
+    --card: 220 5% 18%;
+    --card-foreground: 0 0% 98%;
+    --popover: 220 5% 18%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 220 8% 11%;
+    /* Вторичные элементы - средний тёмно-серый */
+    --secondary: 220 5% 22%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 220 5% 25%;
+    --muted-foreground: 0 0% 70%;
+    /* Акцентные элементы и выделенные - светлее (#3D3F43 / #40414F) */
+    --accent: 220 6% 26%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 5% 20%;
+    --input: 220 5% 20%;
+    --ring: 220 6% 30%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+    font-size: clamp(14px, 1.2vw + 12px, 16px);
+  }
+  body {
+    @apply bg-background text-foreground;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 1rem;
+  }
+  
+  /* Область контента: instant scroll (smooth усиливало лаги при тяжёлой отрисовке) */
+  .main-scroll-area {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  main {
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  /* Скрыть скроллбар, но оставить прокрутку */
+  main::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera - скрыть скроллбар */
+    width: 0;
+    height: 0;
+  }
+  
+  /* Скрыть скроллбар в sidebar */
+  nav::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+  
+  nav {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  /* Скрыть скроллбар в таблицах и других элементах */
+  * {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+  
+  *::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+    width: 0;
+    height: 0;
+  }
+  
+  /* Horizontal scrollable tape for charts */
+  .charts-tape-scroll {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    will-change: scroll-position;
+    overscroll-behavior-x: contain;
+  }
+  .charts-tape-scroll::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Тонкий скролл внутри карточек дашборда */
+  .dashboard-card-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(203 213 225) transparent;
+  }
+  .dashboard-card-scroll::-webkit-scrollbar {
+    width: 6px;
+  }
+  .dashboard-card-scroll::-webkit-scrollbar-track {
+    background: rgb(241 245 249);
+    border-radius: 3px;
+  }
+  .dashboard-card-scroll::-webkit-scrollbar-thumb {
+    background: rgb(203 213 225);
+    border-radius: 3px;
+  }
+  .dashboard-card-scroll::-webkit-scrollbar-thumb:hover {
+    background: rgb(148 163 184);
+  }
+  
+  /* Скролл без видимого скроллбара (колесо мыши работает) */
+  .scrollbar-hide {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Плавная прокрутка для карточек */
+  .charts-tape-scroll > div {
+    will-change: transform;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+  }
+}
+
+/* --- Smart scaling utilities --- */
+@layer utilities {
+  .fluid-text-xs { font-size: var(--scale-xs); }
+  .fluid-text-sm { font-size: var(--scale-sm); }
+  .fluid-text-base { font-size: var(--scale-base); }
+  .fluid-text-lg { font-size: var(--scale-lg); }
+  .fluid-text-xl { font-size: var(--scale-xl); }
+  .fluid-text-2xl { font-size: var(--scale-2xl); }
+  .fluid-text-3xl { font-size: var(--scale-3xl); }
+  .content-pad { padding: var(--content-pad-y) var(--content-pad); }
+  .content-bleed {
+    margin: calc(-1 * var(--content-pad-y)) calc(-1 * var(--content-pad));
+    padding: var(--content-pad-y) var(--content-pad);
+  }
+  .chart-min-h { min-height: var(--chart-min-h); }
+  .chart-max-h { max-height: var(--chart-max-h); }
+}
+
+/* --- Client cards: hover через CSS (без state) для скролла --- */
+.client-card {
+  background: #fff;
+  border: none;
+  box-shadow:
+    inset 3px 3px 6px rgba(0, 0, 0, 0.08),
+    inset -3px -3px 6px rgba(255, 255, 255, 1),
+    0 2px 4px rgba(0, 0, 0, 0.02);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.client-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+.client-card-avatar {
+  box-shadow:
+    inset 4px 4px 8px rgba(0, 0, 0, 0.15),
+    inset -3px -3px 6px rgba(255, 255, 255, 1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.client-card:hover .client-card-avatar {
+  transform: translateY(-4px) scale(1.08);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(255, 255, 255, 0.8);
+}
+
+/* --- Иконки с эффектом впуклости (neumorphic inset) --- */
+.icon-inset {
+  box-shadow:
+    inset 3px 3px 6px rgba(0, 0, 0, 0.12),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.8);
+}
+.icon-inset:hover {
+  box-shadow:
+    inset 2px 2px 4px rgba(0, 0, 0, 0.1),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.9);
+}
+
+/* --- SIDEBAR MENU: вдавленные/выпуклые карточки --- */
+.sidebar-item-inset {
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.06),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.04);
+}
+.sidebar-item-inset:hover {
+  box-shadow:
+    inset 0 1px 2px rgba(0, 0, 0, 0.05),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.03);
+}
+.sidebar-item-raised {
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.08),
+    0 1px 0 rgba(255, 255, 255, 0.5) inset;
+}
+.dark .sidebar-item-inset {
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.2),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.03);
+}
+.dark .sidebar-item-inset:hover {
+  box-shadow:
+    inset 0 1px 2px rgba(0, 0, 0, 0.15),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.02);
+}
+.dark .sidebar-item-raised {
+  box-shadow:
+    0 2px 12px rgba(0, 0, 0, 0.3),
+    0 1px 0 rgba(255, 255, 255, 0.08) inset;
+}
+
+/* --- ORDER ICON: светлая коробка, вдавленность как на референсе (блик сверху-слева, тень снизу-справа) --- */
+.order-icon-box {
+  @apply rounded-lg flex items-center justify-center transition-all duration-300 ease-out flex-shrink-0;
+  background: #f5f3ff;
+  box-shadow:
+    inset 5px 5px 10px rgba(0, 0, 0, 0.2),
+    inset -4px -4px 8px rgba(255, 255, 255, 1),
+    inset 2px 2px 5px rgba(0, 0, 0, 0.12);
+}
+.group:hover .order-icon-box {
+  box-shadow:
+    5px 5px 10px rgba(0, 0, 0, 0.15),
+    -3px -3px 6px rgba(255, 255, 255, 1),
+    inset 0 1px 2px rgba(255, 255, 255, 0.6);
+  transform: translateY(-2px) scale(1.05);
+}
+
+/* --- LUXURY GOAL CARDS --- */
+.luxury-card {
+  position: relative;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow:
+    0 10px 30px -10px rgba(0, 0, 0, 0.05),
+    0 20px 60px -15px rgba(50, 50, 93, 0.1);
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.luxury-card:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    0 20px 40px -10px rgba(0, 0, 0, 0.08),
+    0 30px 70px -15px rgba(50, 50, 93, 0.15);
+}
+
+.spiral-wrapper {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 24px;
+  position: relative;
+  perspective: 500px;
+}
+
+.spiral-svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transform: rotate(45deg) scale(0.9) translateZ(-10px);
+  filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 1));
+  opacity: 0.9;
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.spiral-svg path {
+  stroke-width: 2.5px;
+  transition: stroke 0.6s ease, stroke-width 0.6s ease;
+}
+
+.luxury-card:hover .spiral-svg {
+  transform: rotate(0deg) scale(1.15) translateZ(20px);
+  opacity: 1;
+}
+.luxury-card:hover .spiral-svg path {
+  stroke-width: 3px;
+}
+
+/* Спираль под цвет статуса */
+.luxury-card[data-status="in-progress"] .spiral-svg path {
+  stroke: #2563eb;
+}
+.luxury-card[data-status="in-progress"]:hover .spiral-svg {
+  filter: drop-shadow(0 10px 15px rgba(37, 99, 235, 0.4));
+}
+
+.luxury-card[data-status="completed"] .spiral-svg path {
+  stroke: #16a34a;
+}
+.luxury-card[data-status="completed"]:hover .spiral-svg {
+  filter: drop-shadow(0 10px 15px rgba(22, 163, 74, 0.4));
+}
+
+.luxury-card[data-status="on-hold"] .spiral-svg path {
+  stroke: #64748b;
+}
+.luxury-card[data-status="on-hold"]:hover .spiral-svg {
+  filter: drop-shadow(0 10px 15px rgba(100, 116, 139, 0.4));
+}
+
+.luxury-card .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.luxury-card .card-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.luxury-card .card-desc {
+  color: #64748b;
+  font-size: 14px;
+  margin-bottom: 28px;
+  line-height: 1.5;
+}
+
+.luxury-card .progress-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: 600;
+  color: #475569;
+  margin-bottom: 8px;
+}
+
+.luxury-card .progress-bg {
+  height: 8px;
+  background: #f1f5f9;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.luxury-card .progress-fill {
+  height: 100%;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: width 1s ease;
+}
+
+.luxury-card[data-status="in-progress"] .progress-fill {
+  background: linear-gradient(90deg, #2563eb, #60a5fa);
+}
+.luxury-card[data-status="completed"] .progress-fill {
+  background: linear-gradient(90deg, #16a34a, #22c55e);
+}
+.luxury-card[data-status="on-hold"] .progress-fill {
+  background: linear-gradient(90deg, #64748b, #94a3b8);
+}
+
+.luxury-card .deadline {
+  font-size: 12px;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Бейджи статуса — цвет под спираль */
+.luxury-card .goal-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.luxury-card .badge-in-progress {
+  background: #eff6ff;
+  color: #2563eb;
+}
+.luxury-card .badge-completed {
+  background: #dcfce7;
+  color: #16a34a;
+}
+.luxury-card .badge-on-hold {
+  background: #f1f5f9;
+  color: #64748b;
+}
